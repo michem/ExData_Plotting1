@@ -1,4 +1,4 @@
-# 
+# Script to plot global active power from household power consumption
 
 setwd("/Users/michem/Documents/Scripts/R/toolbox/ExData_Plotting1")
 
@@ -16,9 +16,12 @@ power_consumption$Date <- dmy(power_consumption$Date)
 power_consumption.200702 <- subset(power_consumption, Date >= '2007-02-01' & Date < '2007-02-03') 
 
 # Plotting a histogram of the global active power and saving to png
+plot.new()
+opar <- par()
+par(cex=0.6, bg=NA)
 with(power_consumption.200702, hist(Global_active_power, col="red", 
                                     main="Global active power", xlab='Global active power (kilowatts)')) 
 dev.copy(png, file = "plot_1.png")
 dev.off() 
-
+par(opar) 
 
